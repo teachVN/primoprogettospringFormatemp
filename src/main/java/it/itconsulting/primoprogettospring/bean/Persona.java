@@ -10,7 +10,10 @@ import it.itconsulting.primoprogettospring.component.Dispositivi;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,15 +23,21 @@ import lombok.ToString;
 @Data
 @Entity
 @NoArgsConstructor
+@ToString(exclude = "cartaDiIdentita")
 public class Persona {
     @Id
-    @GeneratedValue
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PersonaSequence")
+   @SequenceGenerator(name = "PersonaSequence", initialValue = 100, allocationSize = 10)
+   //@GeneratedValue(strategy = GenerationType.UUID)
     private int id;
     private String nome;
     private String cognome;
     private String indirizzo;
     @Column(name = "data_nascita")
     private LocalDate dataNascita;
+
+    @OneToOne(mappedBy = "persona")
+    private CartaDiIdentita cartaDiIdentita;
 
     //@Autowired
     //private Computer computer;

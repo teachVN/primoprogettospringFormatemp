@@ -15,7 +15,7 @@ import it.itconsulting.primoprogettospring.repository.DispositiviRepository;
 import it.itconsulting.primoprogettospring.repository.PersonaRepository;
 import it.itconsulting.primoprogettospring.service.PersonaService;
 
-@Component
+//@Component
 public class FirstCommandLineRunner implements CommandLineRunner{
 
     @Autowired
@@ -72,11 +72,11 @@ public class FirstCommandLineRunner implements CommandLineRunner{
 
         System.out.println(personaService.getAll());
 
-        personaService.removePersona(personaSalvata.getId());
+        /* personaService.removePersona(personaSalvata.getId());
 
         System.out.println("stampa tutte le persone dopo la remove");
 
-        System.out.println(personaService.getAll());
+        System.out.println(personaService.getAll()); */
 
 		
     }
